@@ -1,0 +1,50 @@
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<title>EventosApp</title>
+		<!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+		<h1>Evento</h1>
+		<h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar Eventos</a></h3>
+		<div th:each="evento : ${evento}" class="container">
+		    <div class="row">
+				<p>Nome: <span th:text="${evento.nome}"></span></p>
+				<p>Local: <span th:text="${evento.local}"></span></p>
+				<p>Data: <span th:text="${evento.data}"></span></p>
+				<p>Horario: <span th:text="${evento.horario}"></span></p>
+			</div>
+			<form method="post">
+			    <hr>
+			    <h5>Cadastrar Convidado: </h5>
+				Nome: <input type="text" value="" name="nomeConvidado">
+				RG:   <input type="text" value="" name="rg">
+				<button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">control_point</i>Adicionar Convidado</button>
+			</form>
+			<h5>Lista de Convidados:</h5>
+			<table class="striped container">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>RG</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="convidado : ${convidados}">
+						<td><span th:text="${convidado.nomeConvidado}"></span></td>
+						<td><span th:text="${convidado.rg}"></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+			
+		<!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	</body>
+</html>
