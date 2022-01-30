@@ -44,7 +44,7 @@ public class Eventos implements Serializable{
 		
 	}
 	
-	public List<Convidado> getConvidados() { //------
+	public List<Convidado> getConvidados() { 
 		return convidados;
 	}
 	

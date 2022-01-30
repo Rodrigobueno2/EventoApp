@@ -44,9 +44,9 @@ public class EventoService {
 	public ModelAndView ListarEventoPorId(long id) {
 		ModelAndView mv = new ModelAndView("evento/detalhesEvento");
 		Eventos evento = repo.findById(id).get();
-		List<Convidado> convidados =  repoConvidado.findByEvento(id);//----
+		List<Convidado> convidados =  repoConvidado.findByEvento(id);
 		mv.addObject("evento", evento);
-		mv.addObject("convidados", convidados);//-----
+		mv.addObject("convidados", convidados);
 		return mv;
 	}
 
