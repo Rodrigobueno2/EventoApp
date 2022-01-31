@@ -1,12 +1,17 @@
 package com.eventoApp.eventoApp.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eventoApp.eventoApp.models.Convidado;
 import com.eventoApp.eventoApp.models.Eventos;
@@ -23,8 +28,8 @@ public class EventoController {
 	}
 	
 	@PostMapping("/cadastrarEvento")
-	public String form(Eventos evento) {
-		return service.SalvarEvento(evento);
+	public String form(@Valid Eventos evento, BindingResult result, RedirectAttributes attributes) {
+		return service.SalvarEvento(evento, result, attributes);
 	}
 	
 	@GetMapping("/eventos")
@@ -38,8 +43,8 @@ public class EventoController {
 	}
 	
 	@PostMapping("/{id}")
-	public String salvarConvidado(@PathVariable("id") long codEvento, Convidado convidado) {
-		 service.salvarConvidado(codEvento, convidado);
+	public String salvarConvidado(@PathVariable("id") long codEvento, @Valid Convidado convidado, BindingResult result, RedirectAttributes attributes){
+		 service.salvarConvidado(codEvento, convidado, result, attributes);
 		 return "redirect:/{id}";
 	}
 }

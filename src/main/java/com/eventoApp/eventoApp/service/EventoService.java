@@ -1,11 +1,18 @@
 package com.eventoApp.eventoApp.service;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 import java.util.Optional;
 
+import javax.naming.Binding;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eventoApp.eventoApp.models.Convidado;
 import com.eventoApp.eventoApp.models.Eventos;
@@ -25,8 +32,13 @@ public class EventoService {
 		return "evento/formEvento";
 	}
 	
-	public String SalvarEvento(Eventos novoEvento) {
+	public String SalvarEvento(Eventos novoEvento, BindingResult result, RedirectAttributes attributes) {
+		if(result.hasErrors()) {
+			attributes.addFlashAttribute("mensagem","Verifiquem os campos!");
+			return "redirect:/cadastrarEvento";
+		}
 		repo.save(novoEvento);
+		attributes.addFlashAttribute("mensagem","Evento salvo com sucesso!");
 		return "redirect:/cadastrarEvento";
 	}
 	
@@ -50,10 +62,15 @@ public class EventoService {
 		return mv;
 	}
 
-	public String salvarConvidado(long codEvento, Convidado convidado) {
+	public String salvarConvidado(long codEvento, Convidado convidado, BindingResult result, RedirectAttributes attributes) {
+		if(result.hasErrors()) {
+			attributes.addFlashAttribute("mensagem","Verifiquem os campos!");
+			return null;
+		}
 		Eventos evento = repo.findById(codEvento).get();
 		convidado.setEvento(evento);
 		repoConvidado.save(convidado);
+		attributes.addFlashAttribute("mensagem","Convidado adicionado com sucesso!");
 		return null;
 	}
 }

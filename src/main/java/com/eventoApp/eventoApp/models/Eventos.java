@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Eventos implements Serializable{
@@ -18,12 +19,16 @@ public class Eventos implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long codigoEvento;
 	
+	@NotEmpty
 	@JoinColumn(nullable = true)
 	private String nome;
+	@NotEmpty
 	@JoinColumn(nullable = true)
 	private String local;
+	@NotEmpty
 	@JoinColumn(nullable = true)
 	private String data;
+	@NotEmpty
 	@JoinColumn(nullable = true)
 	private String horario;
 	

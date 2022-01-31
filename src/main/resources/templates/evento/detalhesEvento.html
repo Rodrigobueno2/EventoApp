@@ -20,6 +20,7 @@
 				<p>Data: <span th:text="${evento.data}"></span></p>
 				<p>Horario: <span th:text="${evento.horario}"></span></p>
 			</div>
+			<th:block th:include="mensagemDeValidacao"></th:block>
 			<form method="post">
 			    <hr>
 			    <h5>Cadastrar Convidado: </h5>

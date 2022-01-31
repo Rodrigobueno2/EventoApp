@@ -15,6 +15,7 @@
 	<body>
 	    <h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar Eventos</a></h3>
 		<form class="container" method="post" accept-charset="utf-8">
+			<th:block th:include="mensagemDeValidacao"></th:block>
 			Nome: <input type ="text" name="nome" value=""/>	
 			<div class="row">
 			    <div class="input-field col s6">
