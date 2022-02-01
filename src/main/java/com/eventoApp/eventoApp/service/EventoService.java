@@ -93,4 +93,11 @@ public class EventoService {
 		repoConvidado.deleteById(rg);
 		return "redirect:/"+codEvento;
 	}
+
+	public ModelAndView listarEventoDeHoje() {
+		ModelAndView mv = new ModelAndView("evento/eventosHoje");
+		List<Eventos> eventosDeHoje = repo.buscarEventosHoje();
+		mv.addObject("eventosDeHoje", eventosDeHoje);
+		return mv;
+	}
 }

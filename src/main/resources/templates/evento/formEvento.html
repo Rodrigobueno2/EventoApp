@@ -18,7 +18,8 @@
 			<nav>
 				<div class="nav-wrapper">
 				     <ul id="nav-mobile" class="right hide-on-med-and-down">
-				     	<li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar Eventos</a></li>
+				     	<li><a th:href="${(#mvc.url('EC#listarEventoDeHoje')).build()}" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar eventos de hoje</a></li>
+				     	<li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar todos Eventos</a></li>
 				     </ul>
 				</div>
 	  	    </nav>

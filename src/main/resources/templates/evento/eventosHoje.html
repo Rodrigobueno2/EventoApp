@@ -15,9 +15,9 @@
 		<header>
 			<nav>
 				<div class="nav-wrapper">
-				     <a href="#" class="brand-logo"> Lista de Eventos </a>
+				     <a href="#" class="brand-logo"> Lista de Eventos de Hoje </a>
 				     <ul id="nav-mobile" class="right hide-on-med-and-down">
-				        <li><a th:href="${(#mvc.url('EC#listarEventoDeHoje')).build()}" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar eventos de hoje</a></li>
+				        <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar todos Eventos</a></li>
 				     	<li><a href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Evento</a></li>
 				     </ul>
 				</div>
@@ -34,7 +34,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="evento : ${eventos}">
+				<tr th:each="evento : ${eventosDeHoje}">
 					<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0,evento.codigoEvento)).build()}"><span th:text="${evento.nome}"></span></a></td>
 					<td><span th:text="${evento.local}"></span></td>
 					<td><span th:text="${evento.data}"></span></td>

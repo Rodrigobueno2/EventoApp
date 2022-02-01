@@ -62,4 +62,8 @@ public class EventoController {
 		
 	}
 	
+	@GetMapping("/hoje")
+	public ModelAndView listarEventoDeHoje() {
+		return service.listarEventoDeHoje();
+	}
 }
