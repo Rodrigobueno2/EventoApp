@@ -9,25 +9,38 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="style/styleCss.css"/>
 	</head>
 	<body>
-		<h1>Evento</h1>
-		<h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar Eventos</a></h3>
-		<div th:each="evento : ${evento}" class="container">
+		<header>
+			<nav>
+				<div class="nav-wrapper">
+				     <a href="#" class="brand-logo"> Evento </a>
+				     <ul id="nav-mobile" class="right hide-on-med-and-down">
+				     	<li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar Eventos</a></li>
+				     </ul>
+				</div>
+	  	    </nav>
+		</header>
+		<div th:each="evento : ${evento}" class="container detalhesEventos">
+			<h5>Detalhes do evento</h5>
 		    <div class="row">
 				<p>Nome: <span th:text="${evento.nome}"></span></p>
 				<p>Local: <span th:text="${evento.local}"></span></p>
 				<p>Data: <span th:text="${evento.data}"></span></p>
 				<p>Horario: <span th:text="${evento.horario}"></span></p>
 			</div>
+		</div>
+		<div class="container formConvidado">
 			<th:block th:include="mensagemDeValidacao"></th:block>
 			<form method="post">
-			    <hr>
 			    <h5>Cadastrar Convidado: </h5>
 				Nome: <input type="text" value="" name="nomeConvidado">
 				RG:   <input type="text" value="" name="rg">
 				<button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">control_point</i>Adicionar Convidado</button>
 			</form>
+		</div>
+		<div class="container">
 			<h5>Lista de Convidados:</h5>
 			<table class="striped container">
 				<thead>
@@ -43,8 +56,7 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
-			
+		</div>	
 		<!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 	</body>

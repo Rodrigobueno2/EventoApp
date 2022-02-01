@@ -11,10 +11,19 @@
 
       	<!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="style/styleCss.css"/>
 	</head>
 	<body>
-	    <h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar Eventos</a></h3>
-		<form class="container" method="post" accept-charset="utf-8">
+		<header>
+			<nav>
+				<div class="nav-wrapper">
+				     <ul id="nav-mobile" class="right hide-on-med-and-down">
+				     	<li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Listar Eventos</a></li>
+				     </ul>
+				</div>
+	  	    </nav>
+		</header>
+		<form class="container formEvento" method="post" accept-charset="utf-8">
 			<th:block th:include="mensagemDeValidacao"></th:block>
 			Nome: <input type ="text" name="nome" value=""/>	
 			<div class="row">
