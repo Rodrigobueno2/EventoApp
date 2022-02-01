@@ -73,4 +73,24 @@ public class EventoService {
 		attributes.addFlashAttribute("mensagem","Convidado adicionado com sucesso!");
 		return null;
 	}
+
+	public String deletarEvento(long codigoEvento) {
+		if(!repo.findById(codigoEvento).isPresent()) {
+			throw new RuntimeException("Não tem nenhum evento cadastrado com esse código");
+		}
+		
+		repo.deleteById(codigoEvento);
+		return null;
+	}
+
+	public String deletarConvidado(String rg) {
+		if(!repoConvidado.findById(rg).isPresent()) {
+			throw new RuntimeException("Não tem nenhum convidado com esse rg");
+		}
+		Convidado convidado = repoConvidado.findById(rg).get();
+		long codEvento = convidado.getEvento().getCodigoEvento();
+		//String codigo = ""+codEvento;
+		repoConvidado.deleteById(rg);
+		return "redirect:/"+codEvento;
+	}
 }
